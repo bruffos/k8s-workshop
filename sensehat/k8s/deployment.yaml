@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: sensehat-rainbow
+  labels:
+    draft: sensehat-rainbow-app
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        draft: sensehat-rainbow-app
+        app: sensehat-rainbow
+    spec:
+      containers:
+      - image: registry:5000/sensehatrainbow
+        name: sensehat-rainbow
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          privileged: true
+      nodeSelector:
+        sensehat: "true"

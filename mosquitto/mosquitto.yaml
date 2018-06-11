@@ -1,0 +1,72 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mosquitto
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mosquitto
+        group: mosquitto-k8s
+    spec:
+      containers:
+      - name: mosquitto
+        image: eclipse-mosquitto:latest
+        ports:
+        - containerPort: 1883
+          name: mqtt
+        - containerPort: 9001
+          name: websocket
+        volumeMounts:
+        - name: mosquitto-cacerts
+          mountPath: /mosquitto/conf/ca_certificates
+        - name: mosquitto-certs
+          mountPath: /mosquitto/conf/certs
+        - name: mosquitto-acl
+          mountPath: /mosquitto/conf/acl
+        - name: mosquitto-conf
+          mountPath: /mosquitto/conf/conf/mosquitto.conf
+      volumes:
+        - name: mosquitto-cacerts
+          secret:
+            secretName: mosquitto-cacerts
+        - name: mosquitto-certs
+          secret:
+            secretName: mosquitto-certs
+        - name: mosquitto-acl
+          secret:
+            secretName: mosquitto-acl
+        - name: mosquitto-conf
+          configMap:
+            name: mosquitto-conf
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mosquitto-mqtt
+  labels:
+    app: mosquitto
+    group: mosquitto-k8s
+spec:
+  type: NodePort
+  ports:
+  - port: 1883
+    protocol: TCP
+  selector:
+    app: mosquitto
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mosquitto-ws
+  labels:
+    app: mosquitto
+    group: mosquitto-k8s
+spec:
+  type: NodePort
+  ports:
+  - port: 9001
+    protocol: TCP
+  selector:
+    app: mosquitto

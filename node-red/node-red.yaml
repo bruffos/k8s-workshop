@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: nodered
+  namespace: default
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nodered
+        group: nodered-k8s
+    spec:
+      containers:
+      - name: nodered
+        image: nodered/node-red-docker:latest
+        imagePullPolicy: IfNotPresent
+#        volumeMounts:
+#        - name: nodered-volume
+#          mountPath: /data
+        securityContext:
+          runAsUser: 1000
+#      volumes:
+#      - name: nodered-volume
+#        persistentVolumeClaim:
+#          claimName: nfs-pvc-nodered
+      nodeSelector:
+        beta.kubernetes.io/arch: amd64
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodered-ext
+  labels:
+    app: nodered
+spec:
+  type: NodePort
+  ports:
+  - port: 1880
+    protocol: TCP
+  selector:
+    app: nodered
