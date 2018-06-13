@@ -3,6 +3,7 @@ FROM scratch
 ENV ETCD_UNSUPPORTED_ARCH=arm
 
 ADD etcd /usr/local/bin/etcd
+ADD etcdctl /usr/local/bin/etcdctl
 
 EXPOSE 2379 2380
 

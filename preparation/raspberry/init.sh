@@ -36,8 +36,11 @@ dphys-swapfile swapoff
 dphys-swapfile uninstall
 update-rc.d dphys-swapfile remove
 
-orig="$(head -n1 /boot/cmdline.txt) cgroup_enable=cpuset cgroup_enable=memor"
-echo $orig > /boot/cmdline.txt
+CMDLINE_UPDATED=$(grep "cgroup_enable=memory" /boot/cmdline)
+if [ -z "$CMDLINE_UPDATED" ]; then
+    orig="$(head -n1 /boot/cmdline.txt) cgroup_enable=cpuset cgroup_enable=memory"
+    echo $orig > /boot/cmdline.txt
+fi
 
 echo "Please reboot now: shutdown -r now"
 

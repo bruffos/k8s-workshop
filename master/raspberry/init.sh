@@ -50,41 +50,41 @@ EOF
 
 mkdir -p /etc/kubernetes/pki/
 if [ ! "$FIRST" = "TRUE" ]; then
-    if [ ! -f /etc/kuberenetes/pki/sa.crt  ]; then
-        echo "/etc/kuberenetes/pki/sa.crt not found!"
+    if [ ! -f /etc/kubernetes/pki/sa.crt  ]; then
+        echo "/etc/kubernetes/pki/sa.crt not found!"
         echo "Copy from other master, or if first master, use -f flag!"
-        echo "On other master: scp /etc/kuberenetes/pki/ca.* [this user]@${IP}:~/."
-        echo "On other master: scp /etc/kuberenetes/pki/sa.* [this user]@${IP}:~/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
+        echo "On other master: scp /etc/kubernetes/pki/ca.* [this user]@${IP}:~/."
+        echo "On other master: scp /etc/kubernetes/pki/sa.* [this user]@${IP}:~/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
         exit
     fi
 
-    if [ ! -f /etc/kuberenetes/pki/sa.key  ]; then
-        echo "/etc/kuberenetes/pki/sa.key not found!"
+    if [ ! -f /etc/kubernetes/pki/sa.key  ]; then
+        echo "/etc/kubernetes/pki/sa.key not found!"
         echo "Copy from other master, or if first master, use -f flag!"
-        echo "On other master: scp /etc/kuberenetes/pki/ca.* [this user]@${IP}:~/."
-        echo "On other master: scp /etc/kuberenetes/pki/sa.* [this user]@${IP}:~/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
+        echo "On other master: scp /etc/kubernetes/pki/ca.* [this user]@${IP}:~/."
+        echo "On other master: scp /etc/kubernetes/pki/sa.* [this user]@${IP}:~/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
         exit
     fi
-    if [ ! -f /etc/kuberenetes/pki/sa.crt  ]; then
-        echo "/etc/kuberenetes/pki/sa.crt not found!"
+    if [ ! -f /etc/kubernetes/pki/sa.crt  ]; then
+        echo "/etc/kubernetes/pki/sa.crt not found!"
         echo "Copy from other master, or if first master, use -f flag!"
-        echo "On other master: scp /etc/kuberenetes/pki/ca.* [this user]@${IP}:~/."
-        echo "On other master: scp /etc/kuberenetes/pki/sa.* [this user]@${IP}:~/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
+        echo "On other master: scp /etc/kubernetes/pki/ca.* [this user]@${IP}:~/."
+        echo "On other master: scp /etc/kubernetes/pki/sa.* [this user]@${IP}:~/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
         exit
     fi
-    if [ ! -f /etc/kuberenetes/pki/sa.key  ]; then
-        echo "/etc/kuberenetes/pki/sa.key not found!"
+    if [ ! -f /etc/kubernetes/pki/sa.key  ]; then
+        echo "/etc/kubernetes/pki/sa.key not found!"
         echo "Copy from other master, or if first master, use -f flag!"
-        echo "On other master: scp /etc/kuberenetes/pki/ca.* [this user]@${IP}:~/."
-        echo "On other master: scp /etc/kuberenetes/pki/sa.* [this user]@${IP}:~/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
-        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kuberenetes/pki/."
+        echo "On other master: scp /etc/kubernetes/pki/ca.* [this user]@${IP}:~/."
+        echo "On other master: scp /etc/kubernetes/pki/sa.* [this user]@${IP}:~/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
+        echo "On this node: cd ~;sudo chown root:root sa.*;sudo cp sa.* /etc/kubernetes/pki/."
         exit
     fi
 
