@@ -1,12 +1,12 @@
-Execute the following command on a raspian strecth installation
-First set unique hostname by running, use menu
+First set unique hostname by running, use menu 
+"2 Network options"
+
 If this is the first node 
 Use this as input when adding more etcd and master nodes
 
-"2 Network options"
-
     sudo raspi-config
 
+Execute the following command on a raspian strecth installation
 Or run 
     
     sudo bash init.sh
