@@ -79,16 +79,16 @@ if [ -z "$MASTER_HOST" ]; then
     kubeadm alpha phase certs etcd-ca
 else
     if [ ! -f /etc/kubernetes/pki/etcd/ca.crt  ]; then
-        echo "/etc/kuberenetes/pki/etcd/ca.crt not found!"
+        echo "/etc/kubernetes/pki/etcd/ca.crt not found!"
         echo "Copy from other etcd node, or if first etcd node, use -f flag!"
-        echo "On other master: sudo scp /etc/kuberenetes/pki/etcd/ca.* [this user]@${IP}:~/."
+        echo "On other master: sudo scp /etc/kubernetes/pki/etcd/ca.* [this user]@${IP}:~/."
         echo "On this node: cd ~;sudo chown root:root ca.*;sudo mv ca.* /etc/kubernetes/pki/etcd/."
         exit
     fi
     if [ ! -f /etc/kubernetes/pki/etcd/ca.key  ]; then
-        echo "/etc/kuberenetes/pki/etcd/ca.key not found!"
+        echo "/etc/kubernetes/pki/etcd/ca.key not found!"
         echo "Copy from other etcd node, or if first etcd node, use -f flag!"
-        echo "On other master: sudo scp /etc/kuberenetes/pki/etcd/ca.* [this user]@${IP}:~/."
+        echo "On other master: sudo scp /etc/kubernetes/pki/etcd/ca.* [this user]@${IP}:~/."
         echo "On this node: cd ~;sudo chown root:root ca.*;sudo mv ca.* /etc/kubernetes/pki/etcd/."
         exit
     fi
