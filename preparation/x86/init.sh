@@ -34,7 +34,7 @@ go get github.com/kubernetes-incubator/cri-tools/cmd/crictl
 cp $GOPATH/bin/crictl /usr/local/bin
 
 swapoff -a
-sed -i 's/\/swap.img/\#\/swap.img/g' /etc/fstab
+sed -i 's/\/swap/\#\/swap/g' /etc/fstab
 
 CMDLINE_UPDATED=$(grep "cgroup_enable=memory" /etc/default/grub)
 if [ -z "$CMDLINE_UPDATED" ]; then
